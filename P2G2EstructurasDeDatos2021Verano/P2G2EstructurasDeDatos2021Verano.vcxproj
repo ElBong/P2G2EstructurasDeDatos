@@ -143,6 +143,11 @@
     <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="2_4_Tree.h" />
+    <ClInclude Include="Libraries.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeData.h" />
     <ClInclude Include="RuntimeException.h" />
     <ClInclude Include="Tools.h" />
   </ItemGroup>
