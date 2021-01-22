@@ -4,15 +4,15 @@
 class TwoFour {
 private: 
 	Node* root;
-	void recDisplayTree(Node* thisNode, int level, int childNumber);
+	string recDisplayTree(Node* thisNode, int level, int childNumber);
 public:
 	 TwoFour();
 	 ~TwoFour();
 	 void insert(int dValue);
 	 void split(Node* thisNode);
 	 Node* getNextChild(Node* theNode, int theValue);
-	 void displayTree(int i);
-	 void inorderdisplay(Node* thisNode, int level, int childNumber);
+	 string toString(int = 0); //displayTree(int i)
+	 string inorderDisplay(Node* thisNode, int level, int childNumber);
 	 Node* find(int theValue);
 	 Node* findvalue(Node* theNode, int theValue);
 	 Node* remove(Node* currnode, int theValue);

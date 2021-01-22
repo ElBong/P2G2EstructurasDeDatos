@@ -6,20 +6,22 @@ TwoFour::~TwoFour() {
 	//FALTA IMPLEMENTAR LA LÓGICA DEL DESTRUCTOR
 	delete root;
 }
-void TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
+string TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
 {
-	cout<<"level="<<level<<" child="<<childNumber<<" ";
-	thisNode->displayNode(); // display this node
-	cout << endl;
+	stringstream s;
+	s<<"level="<<level<<" child="<<childNumber<<" ";
+	s << thisNode->displayNode() << "\n";
 	// call ourselves for each child of this node
 	int numItems = thisNode->getNumItems();
+	Node* nextNode = nullptr;
 	for (int j = 0; j < numItems + 1; j++) {
-		Node* nextNode = thisNode->getChild(j);
-		if (nextNode != nullptr)
-			recDisplayTree(nextNode, level + 1, j);
+		nextNode = thisNode->getChild(j);
+		if (nextNode)
+			s << recDisplayTree(nextNode, level + 1, j);
 		else
-			return;
+			return s.str();
 	}
+	return s.str();
 }
 
 void TwoFour::insert(int dValue)
@@ -108,30 +110,32 @@ Node* TwoFour::getNextChild(Node* theNode, int theValue)
 	return theNode->getChild(j); // return right child
 }
 
-void TwoFour::displayTree(int i)
-{
-	if (i == 0) {
-		recDisplayTree(root, 0, 0);
-	}
+string TwoFour::toString(int i){
+	stringstream s;
+	if (i == 0) 
+		s << recDisplayTree(root, 0, 0);
+	
 	else
-		inorderdisplay(root, 0, 0);
-	cout << endl;
+		s << inorderDisplay(root, 0, 0);
+	s << "\n";
+	return s.str();
 }
 
-void TwoFour::inorderdisplay(Node* thisNode, int level, int childNumber)
-{
+string TwoFour::inorderDisplay(Node* thisNode, int level, int childNumber){
+	stringstream s;
 	int numItems = thisNode->getNumItems();
 	for (int j = 0; j < numItems + 1; j++) {
 		Node* nextNode = thisNode->getChild(j);
-		if (nextNode != nullptr)
-			inorderdisplay(nextNode, level + 1, j);
+		if (nextNode)
+			s<<inorderDisplay(nextNode, level + 1, j);
 		else {
-			thisNode->displayNode();
-			return;
+			s<<thisNode->displayNode();
+			return s.str();
 		}
 		if (j < thisNode->getNumItems())
-			thisNode->displayValue(j);
+			s<<thisNode->displayValue(j);
 	}
+	return s.str();
 }
 
 Node* TwoFour::find(int theValue)
