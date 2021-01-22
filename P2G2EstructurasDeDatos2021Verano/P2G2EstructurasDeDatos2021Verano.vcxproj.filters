@@ -21,6 +21,9 @@
     <ClCompile Include="Tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TwoFour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RuntimeException.h">
@@ -35,13 +38,13 @@
     <ClInclude Include="NodeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="2_4_Tree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Libraries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoFour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
