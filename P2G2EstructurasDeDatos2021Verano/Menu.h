@@ -6,6 +6,7 @@
 class Menu {
 private:
 	TwoFour* tf;
+	static const int MAX_RAND;
 public:
 	Menu();
 	~Menu();

@@ -3,6 +3,7 @@ Menu::Menu() {
 	tf = new TwoFour();
 }
 Menu::~Menu() { delete tf; }
+const int Menu::MAX_RAND = 500;
 void Menu::startScreen() {
 	setlocale(LC_ALL, "");
 	printn("..............................................................................");
@@ -57,8 +58,16 @@ void Menu::option1() {
 	printn("..............................................................................");
 	printn("Opción 1: Insertar números enteros aleatorios.");
 	printn("..............................................................................");
-
-
+	printn("Digite la cantidad de valores que desea insertar: ");
+	int rdm, n = readInt();
+	srand(time(NULL));
+	for (int a = 0; a < n; a++) {
+		if (!tf->find(a)) { //Si el elemento no existe
+			rdm = rand() % MAX_RAND + 1;
+			printf("Insertando a: %d.\n", rdm);
+			tf->insert(rdm);
+		}
+	}
 	cont();
 }
 void Menu::option2() {
@@ -66,8 +75,71 @@ void Menu::option2() {
 	printn("..............................................................................");
 	printn("Opción 2: Realizar operaciones 2n con probabilidad.");
 	printn("..............................................................................");
+	int n;
+	printn("Digite el valor de n: ");
+	n = readInt();
+	long startTime, endTime;
+	int operation = 0;
+	int searchCount = 0;
+	int insertCount = 0;
+	int deleteCount = 0;
+	/*
+	startTime = System.nanoTime();
+	while (operation < (2 * n)) {
+		double rand = random.nextDouble();
+		if (rand < 0.4) {
+			// Making sure insert operation runs at 0.4
+			// probability
+			int x = random.nextInt(n);
+			Node present = theTree.find(x);
+			if (present != null) {
+				//System.out.println("Data Already present!!");
+			}
+			else {
+				theTree.insert(x);
+			}
+			operation++;
+			insertCount++;
 
+		}
+		rand = random.nextDouble();
+		if (rand < 0.25) { // Making sure delete operation runs at 0.25 //
+							// probability
+			int x = random.nextInt(n);
+			Node del = theTree.find(x);
+			if (del != null) {
+				if (theTree.delete(del, x) != null)
+				{//System.out.println("Deleted" + x);
+				}
+				else {
+					//System.err.println("Not Deleted!!!");
+				}
+			}
+			else
+				//System.out.println("Could not find " + x);
+				operation++;
+			deleteCount++;
 
+		}
+		rand = random.nextDouble();
+		if (rand < 0.35) { // Making sure search operation runs at 0.35 //
+						// probability
+			theTree.find(random.nextInt(n));
+			operation++;
+			searchCount++;
+
+		}
+	}
+	endTime = System.nanoTime() - startTime;
+
+	System.out.println("Total No. of search operations performed :"
+		+ searchCount);
+	System.out.println("Total No. of delete operations performed :"
+		+ deleteCount);
+	System.out.println("Total No. of insert operations performed :"
+		+ insertCount);
+	System.out.println("Total Time Taken:" + endTime + " nanoseconds");
+	*/
 	cont();
 }
 void Menu::option3() {
