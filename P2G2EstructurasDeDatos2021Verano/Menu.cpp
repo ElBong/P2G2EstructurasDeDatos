@@ -62,11 +62,12 @@ void Menu::option1() {
 	int rdm, n = readInt();
 	srand(time(NULL));
 	for (int a = 0; a < n; a++) {
-		if (!tf->find(a)) { //Si el elemento no existe
-			rdm = rand() % MAX_RAND + 1;
+		rdm = rand() % MAX_RAND + 1;
+		if (!tf->find(rdm)) { //Si el elemento no existe
 			printf("Insertando a: %d.\n", rdm);
 			tf->insert(rdm);
-		}
+		}else
+			;//printn("Número repetido!"); //Hay que ver si vale la pena cambiar esto por una excepción
 	}
 	cont();
 }
