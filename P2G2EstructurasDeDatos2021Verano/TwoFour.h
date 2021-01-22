@@ -3,9 +3,11 @@
 
 class TwoFour {
 private: 
-	Node* root = new Node;
+	Node* root;
 	void recDisplayTree(Node* thisNode, int level, int childNumber);
 public:
+	 TwoFour();
+	 ~TwoFour();
 	 void insert(int dValue);
 	 void split(Node* thisNode);
 	 Node* getNextChild(Node* theNode, int theValue);

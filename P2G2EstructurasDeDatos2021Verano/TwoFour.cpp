@@ -1,5 +1,11 @@
 #include "TwoFour.h"
-
+TwoFour::TwoFour() {
+	root = new Node();
+}
+TwoFour::~TwoFour() {
+	//FALTA IMPLEMENTAR LA LÓGICA DEL DESTRUCTOR
+	delete root;
+}
 void TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
 {
 	cout<<"level="<<level<<" child="<<childNumber<<" ";
