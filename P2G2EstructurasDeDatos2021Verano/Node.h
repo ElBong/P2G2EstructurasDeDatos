@@ -9,6 +9,7 @@ private:
 	NodeData** itemArray;
 public:
 	Node();
+	~Node();
 	void connectChild(int childNum, Node* child);
 	Node* disconnectChild(int childNum);
 	Node* getChild(int childNum);

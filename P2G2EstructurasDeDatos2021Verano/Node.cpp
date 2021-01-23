@@ -154,3 +154,6 @@ Node* Node::getSibling(int value) {
 	}
 	return x;
 }
+Node::~Node() {
+
+}

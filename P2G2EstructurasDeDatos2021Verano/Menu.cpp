@@ -164,7 +164,18 @@ void Menu::option5() {
 	printn("..............................................................................");
 	printn("Opción 5: Insertar un elemento.");
 	printn("..............................................................................");
-
+	printn("El árbol se encuentra conformado de la siguiente manera: ");
+	printn(tf->toString());
+	printn("..............................................................................");
+	printn("Digite el valor que desea insertar: ");
+	int value = readInt();
+	if (tf->find(value))
+		printn("El dato ya existe!");
+	else {
+		tf->insert(value);
+		printn("El valor fuer insertado. El árbol queda de la siguiente manera: ");
+		printn(tf->toString());
+	}
 
 	cont();
 }
@@ -173,8 +184,18 @@ void Menu::option6() {
 	printn("..............................................................................");
 	printn("Opción 6: Eliminar un elemento.");
 	printn("..............................................................................");
-
-
+	printn("El árbol se encuentra conformado de la siguiente manera: ");
+	printn(tf->toString());
+	printn("..............................................................................");
+	printn("Digite el valor que desea eliminar: ");
+	int value = readInt();
+	Node* aux = tf->find(value);
+	if (aux){
+		tf->remove(aux,value);
+		printn("Al insertar el valor, el árbol queda de la siguiente manera: ");
+		printn(tf->toString());
+	}else
+		printn("El dato no existe!");
 	cont();
 }
 void Menu::option7() {
@@ -182,8 +203,13 @@ void Menu::option7() {
 	printn("..............................................................................");
 	printn("Opción 7: Buscar un elemento.");
 	printn("..............................................................................");
-
-
+	printn("Digite el valor a buscar: ");
+	int value = readInt();
+	Node* found = tf->find(value);
+	if (found)
+		printf("¡El valor %d fue encontrado!\n",value);
+	else
+		printf("¡El valor %d no fue encontrado!\n", value);
 	cont();
 }
 void Menu::option8() {
