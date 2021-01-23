@@ -156,6 +156,7 @@ void Menu::option4() {
 	printn("..............................................................................");
 	printn("Opción 4: Ver el árbol nivel por nivel.");
 	printn("..............................................................................");
+	if (tf->getSize() == 0) { throw EmptyTree("El árbol no posee elementos."); }
 	printn(tf->toString(1));
 	cont();
 }
@@ -170,7 +171,7 @@ void Menu::option5() {
 	printn("Digite el valor que desea insertar: ");
 	int value = readInt();
 	if (tf->find(value))
-		printn("El dato ya existe!");
+		throw DuplicatedData("¡El dato ya existe!");
 	else {
 		tf->insert(value);
 		printn("El valor fuer insertado. El árbol queda de la siguiente manera: ");
@@ -190,12 +191,13 @@ void Menu::option6() {
 	printn("Digite el valor que desea eliminar: ");
 	int value = readInt();
 	Node* aux = tf->find(value);
-	if (aux){
-		tf->remove(aux,value);
+	if (aux) {
+		tf->remove(aux, value);
 		printn("Al insertar el valor, el árbol queda de la siguiente manera: ");
 		printn(tf->toString());
-	}else
-		printn("El dato no existe!");
+	}
+	else
+		throw WrongData("El elemento no existe.");
 	cont();
 }
 void Menu::option7() {

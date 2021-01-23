@@ -26,6 +26,6 @@ public:
 	string displayNode();
 	string displayValue(int j);
 	void removeNodeValue(int value);
-	void removeValue(int value,string side);
+	void removeValue(int value, string side);
 	Node* getSibling(int value);
 };

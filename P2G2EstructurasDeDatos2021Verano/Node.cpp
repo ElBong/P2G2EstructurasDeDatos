@@ -110,6 +110,7 @@ void Node::removeNodeValue(int value) {
 			itemArray[i]->setData(itemArray[i + 1]->getData());
 		}
 	}
+	//delete itemArray[numItems - 1];
 	itemArray[numItems - 1] = nullptr; // disconnect it
 	numItems--; // one less item
 }
@@ -125,6 +126,7 @@ void Node::removeValue(int value, string side) {
 			itemArray[i]->setData(itemArray[i + 1]->getData());
 		}
 	}
+	//delete itemArray[numItems - 1];
 	itemArray[numItems - 1] = nullptr; // disconnect it
 	numItems--; // one less item
 }

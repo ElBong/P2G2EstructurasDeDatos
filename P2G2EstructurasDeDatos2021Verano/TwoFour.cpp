@@ -1,11 +1,18 @@
+
 #include "TwoFour.h"
 TwoFour::TwoFour() {
 	root = new Node();
+	size = 0;
 }
 TwoFour::~TwoFour() {
-	recMakeEmpty(root,0,0);
+	recMakeEmpty(root, 0, 0);
+	size = 0;
 }
-void TwoFour::recMakeEmpty(Node* thisNode, int level, int childNumber){
+int TwoFour::getSize()
+{
+	return this->size;
+}
+void TwoFour::recMakeEmpty(Node* thisNode, int level, int childNumber) {
 	if (thisNode) {
 		if (thisNode->isLeaf()) delete thisNode;
 		int numItems = thisNode->getNumItems();
@@ -22,7 +29,7 @@ void TwoFour::recMakeEmpty(Node* thisNode, int level, int childNumber){
 string TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
 {
 	stringstream s;
-	s<<"level="<<level<<" child="<<childNumber<<" ";
+	s << "level=" << level << " child=" << childNumber << " ";
 	s << thisNode->displayNode() << "\n";
 	// call ourselves for each child of this node
 	int numItems = thisNode->getNumItems();
@@ -59,7 +66,8 @@ void TwoFour::insert(int dValue)
 	} // end while
 
 	curNode->insertItem(tempItem); // insert new NodeData
-   // end insert()
+	size++;
+	// end insert()
 }
 
 void TwoFour::split(Node* thisNode)
@@ -123,30 +131,31 @@ Node* TwoFour::getNextChild(Node* theNode, int theValue)
 	return theNode->getChild(j); // return right child
 }
 
-string TwoFour::toString(int i){
+string TwoFour::toString(int i) {
 	stringstream s;
-	if (i == 0) 
+	s << "Cantidad de datos en el árbol: " << size << ".\n";
+	if (i == 0)
 		s << recDisplayTree(root, 0, 0);
-	
+
 	else
 		s << inorderDisplay(root, 0, 0);
 	s << "\n";
 	return s.str();
 }
 
-string TwoFour::inorderDisplay(Node* thisNode, int level, int childNumber){
+string TwoFour::inorderDisplay(Node* thisNode, int level, int childNumber) {
 	stringstream s;
 	int numItems = thisNode->getNumItems();
 	for (int j = 0; j < numItems + 1; j++) {
 		Node* nextNode = thisNode->getChild(j);
 		if (nextNode)
-			s<<inorderDisplay(nextNode, level + 1, j);
+			s << inorderDisplay(nextNode, level + 1, j);
 		else {
-			s<<thisNode->displayNode();
+			s << thisNode->displayNode();
 			return s.str();
 		}
 		if (j < thisNode->getNumItems())
-			s<<thisNode->displayValue(j);
+			s << thisNode->displayValue(j);
 	}
 	return s.str();
 }
@@ -188,28 +197,28 @@ Node* TwoFour::findvalue(Node* theNode, int theValue)
 
 Node* TwoFour::remove(Node* currnode, int theValue)
 {
+
 	Node* y = nullptr;
 
 	if (currnode->isLeaf()) {
 		if (currnode->getNumItems() > 1) {
 			currnode->removeNodeValue(theValue);
+			size--;
 			return currnode;
 		}
 		else {
 			y = removeLeaf_cases(currnode, theValue);
+			size--;
 			return y;
 		}
 	}
 	else {
-		// delete interior nodes
-		//boolean x = false;
-
 		Node* n = getNextChild(currnode, theValue);
 		Node* c = getinordernode(n);
 		NodeData* d = c->getItem(0);
 		int k = d->getData();
-		remove(c, d->getData());
-
+		delete remove(c, d->getData());
+		size--;
 		Node* found = find(theValue);
 		for (int i = 0; i < found->getNumItems(); i++) {
 			if (found->getItem(i)->getData() == theValue) {
@@ -217,7 +226,6 @@ Node* TwoFour::remove(Node* currnode, int theValue)
 			}
 		}
 		return found;
-
 	}
 }
 
@@ -258,12 +266,12 @@ Node* TwoFour::removeLeaf_cases(Node* thisNode, int theValue)
 				if (p->getNumItems() == 0) {
 					//						System->out
 					//								->println("Parent became null; Now Tree is Re-Balancing");
-					if (p != root) {
+					if (p != root)
 						p = balancetree(p);
-					}
-					else {
+
+					else
 						root = sibling;
-					}
+
 				}
 
 				return p;
