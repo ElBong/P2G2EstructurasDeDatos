@@ -1,6 +1,6 @@
 #pragma once
 #include "Node.h"
-
+#include "RuntimeException.h"
 class TwoFour {
 private:
 	Node* root;
@@ -9,7 +9,6 @@ private:
 public:
 	TwoFour();
 	~TwoFour();
-	int getSize();
 	void insert(int dValue);
 	void split(Node* thisNode);
 	Node* getNextChild(Node* theNode, int theValue);
@@ -23,4 +22,6 @@ public:
 	Node* getinordernode(Node* thisNode);
 	//This ones are new
 	void recMakeEmpty(Node* thisNode, int level, int childNumber);
+	bool isEmpty();
+	int getSize();
 };

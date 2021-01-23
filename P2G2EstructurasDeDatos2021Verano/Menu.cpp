@@ -148,6 +148,9 @@ void Menu::option3() {
 	printn("..............................................................................");
 	printn("Opción 3: Imprimir \"In-Order\".");
 	printn("..............................................................................");
+	if (tf->isEmpty())
+		throw EmptyTree(
+			"¡El árbol se encuentra vacío! Debe introducir elementos antes de usar esta opción");
 	printn(tf->toString());
 	cont();
 }
@@ -156,6 +159,9 @@ void Menu::option4() {
 	printn("..............................................................................");
 	printn("Opción 4: Ver el árbol nivel por nivel.");
 	printn("..............................................................................");
+	if (tf->isEmpty())
+		throw EmptyTree(
+			"¡El árbol se encuentra vacío! Debe introducir elementos antes de usar esta opción");
 	if (tf->getSize() == 0) { throw EmptyTree("El árbol no posee elementos."); }
 	printn(tf->toString(1));
 	cont();
@@ -185,6 +191,9 @@ void Menu::option6() {
 	printn("..............................................................................");
 	printn("Opción 6: Eliminar un elemento.");
 	printn("..............................................................................");
+	if (tf->isEmpty())
+		throw EmptyTree(
+			"¡El árbol se encuentra vacío! Debe introducir elementos antes de usar esta opción.");
 	printn("El árbol se encuentra conformado de la siguiente manera: ");
 	printn(tf->toString());
 	printn("..............................................................................");
@@ -193,7 +202,7 @@ void Menu::option6() {
 	Node* aux = tf->find(value);
 	if (aux) {
 		tf->remove(aux, value);
-		printn("Al insertar el valor, el árbol queda de la siguiente manera: ");
+		printn("Al eliminar el valor, el árbol queda de la siguiente manera: ");
 		printn(tf->toString());
 	}
 	else
@@ -205,6 +214,9 @@ void Menu::option7() {
 	printn("..............................................................................");
 	printn("Opción 7: Buscar un elemento.");
 	printn("..............................................................................");
+	if (tf->isEmpty())
+		throw EmptyTree(
+			"¡El árbol se encuentra vacío! Debe introducir elementos antes de usar esta opción.");
 	printn("Digite el valor a buscar: ");
 	int value = readInt();
 	Node* found = tf->find(value);

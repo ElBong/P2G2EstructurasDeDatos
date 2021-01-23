@@ -4,6 +4,7 @@ TwoFour::TwoFour() {
 	root = new Node();
 	size = 0;
 }
+bool TwoFour::isEmpty() { return size == 0; }
 TwoFour::~TwoFour() {
 	recMakeEmpty(root, 0, 0);
 	size = 0;
@@ -195,24 +196,29 @@ Node* TwoFour::findvalue(Node* theNode, int theValue)
 	return l;
 }
 
-Node* TwoFour::remove(Node* currnode, int theValue)
-{
-
+Node* TwoFour::remove(Node* currnode, int theValue){
+	if (currnode == root) {
+		if (root->getNumItems() == 1 && size == 1) {
+			delete root;
+			root = new Node();
+			size--;
+			return nullptr;
+		}
+		if(root->getNumItems() >= 1 && size > 1 || root->getNumItems() != size)
+			throw InvalidOperation("Operación invalida.");
+	}
 	Node* y = nullptr;
-
 	if (currnode->isLeaf()) {
 		if (currnode->getNumItems() > 1) {
 			currnode->removeNodeValue(theValue);
 			size--;
 			return currnode;
-		}
-		else {
+		}else{
 			y = removeLeaf_cases(currnode, theValue);
 			size--;
 			return y;
 		}
-	}
-	else {
+	}else {
 		Node* n = getNextChild(currnode, theValue);
 		Node* c = getinordernode(n);
 		NodeData* d = c->getItem(0);
@@ -492,15 +498,12 @@ Node* TwoFour::balancetree(Node* currnode)
 	return nullptr;
 }
 
-Node* TwoFour::getinordernode(Node* thisNode)
-{
+Node* TwoFour::getinordernode(Node* thisNode){
 	Node* c = nullptr;
-	if (thisNode->isLeaf()) {
+	if (thisNode->isLeaf())
 		c = thisNode;
-	}
-	else {
+	else
 		c = getinordernode(thisNode->getChild(0));
-	}
 	return c;
 }
 

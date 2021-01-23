@@ -29,3 +29,7 @@ class DuplicatedData : public RuntimeException {
 public:
 	DuplicatedData(const string& error) : RuntimeException(error) {}
 };
+class InvalidOperation : public RuntimeException {
+public:
+	InvalidOperation(const string& error) : RuntimeException(error) {}
+};

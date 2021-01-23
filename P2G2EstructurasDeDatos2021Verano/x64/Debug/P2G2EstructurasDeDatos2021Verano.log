@@ -1,7 +1,2 @@
-﻿  Menu.cpp
-C:\Users\Boris Monge\source\repos\ElBong\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(63,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Boris Monge\source\repos\ElBong\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(82,18): warning C4101: 'endTime': variable local sin referencia
-C:\Users\Boris Monge\source\repos\ElBong\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(82,7): warning C4101: 'startTime': variable local sin referencia
-  Source.cpp
-  Generando código...
-  P2G2EstructurasDeDatos2021Verano.vcxproj -> C:\Users\Boris Monge\Source\Repos\ElBong\P2G2EstructurasDeDatos\x64\Debug\P2G2EstructurasDeDatos2021Verano.exe
+﻿  TwoFour.cpp
+  P2G2EstructurasDeDatos2021Verano.vcxproj -> C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\x64\Debug\P2G2EstructurasDeDatos2021Verano.exe
