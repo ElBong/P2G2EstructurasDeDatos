@@ -14,6 +14,7 @@ public:
 	Node* disconnectChild(int childNum);
 	Node* getChild(int childNum);
 	Node* getParent();
+	NodeData** getItmArr();
 	bool isLeaf();
 	int getNumItems();
 	void setNumItems(int numItems);
@@ -28,4 +29,6 @@ public:
 	void removeNodeValue(int value);
 	void removeValue(int value, string side);
 	Node* getSibling(int value);
+	//This one is new
+	void makeEmpty();
 };

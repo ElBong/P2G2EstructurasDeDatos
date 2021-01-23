@@ -162,7 +162,6 @@ void Menu::option4() {
 	if (tf->isEmpty())
 		throw EmptyTree(
 			"¡El árbol se encuentra vacío! Debe introducir elementos antes de usar esta opción");
-	if (tf->getSize() == 0) { throw EmptyTree("El árbol no posee elementos."); }
 	printn(tf->toString(1));
 	cont();
 }

@@ -81,6 +81,9 @@ void Node::insertFront(NodeData* item) {
 	itemArray[0] = item;
 	connectChild(0, nullptr);
 }
+NodeData** Node::getItmArr() {
+	return itemArray;
+}
 NodeData* Node::removeItem() { //Largest item
 	NodeData* temp = itemArray[numItems - 1]; // save item
 	itemArray[numItems - 1] = nullptr; // disconnect it
@@ -163,4 +166,14 @@ Node::~Node() {
 		delete childArray[i];
 	delete parent, delete[] childArray;
 	delete[] itemArray;
+}
+void Node::makeEmpty() {
+	for (int i = 0; i < ORDER - 1; i++) {
+		delete itemArray[i];
+		itemArray[i] = nullptr;
+	}
+	for (int i = 0; i < ORDER; i++) {
+		delete childArray[i];
+		childArray[i] = nullptr;
+	}
 }

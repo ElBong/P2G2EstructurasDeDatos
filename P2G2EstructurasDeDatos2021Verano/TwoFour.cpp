@@ -134,13 +134,13 @@ Node* TwoFour::getNextChild(Node* theNode, int theValue)
 
 string TwoFour::toString(int i) {
 	stringstream s;
-	s << "Cantidad de datos en el árbol: " << size << ".\n";
-	if (i == 0)
-		s << recDisplayTree(root, 0, 0);
-
-	else
-		s << inorderDisplay(root, 0, 0);
-	s << "\n";
+	if (!this->isEmpty()) {
+		s << "Cantidad de datos en el árbol: " << size << ".\n";
+		if (i == 0) s << recDisplayTree(root, 0, 0);
+		else s << inorderDisplay(root, 0, 0);
+		s << "\n";
+	}else
+		s << "El árbol se encuentra vacío.\n";
 	return s.str();
 }
 
@@ -197,16 +197,17 @@ Node* TwoFour::findvalue(Node* theNode, int theValue)
 }
 
 Node* TwoFour::remove(Node* currnode, int theValue){
+	if (size == 1) {
+		root->makeEmpty();
+		size--;
+		return nullptr;
+	}
+
 	if (currnode == root) {
-		if (root->getNumItems() == 1 && size == 1) {
-			delete root;
-			root = new Node();
-			size--;
-			return nullptr;
-		}
-		if(root->getNumItems() >= 1 && size > 1 || root->getNumItems() != size)
+		if(root->getNumItems() != size)
 			throw InvalidOperation("Operación invalida.");
 	}
+
 	Node* y = nullptr;
 	if (currnode->isLeaf()) {
 		if (currnode->getNumItems() > 1) {
@@ -223,7 +224,7 @@ Node* TwoFour::remove(Node* currnode, int theValue){
 		Node* c = getinordernode(n);
 		NodeData* d = c->getItem(0);
 		int k = d->getData();
-		delete remove(c, d->getData());
+		remove(c, d->getData());
 		size--;
 		Node* found = find(theValue);
 		for (int i = 0; i < found->getNumItems(); i++) {
