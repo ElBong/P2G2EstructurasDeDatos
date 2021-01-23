@@ -19,4 +19,6 @@ public:
 	 Node* removeLeaf_cases(Node* thisNode, int theValue);
 	 Node* balancetree(Node* currnode);
 	 Node* getinordernode(Node* thisNode);
+	 //This ones are new
+	 void recMakeEmpty(Node* thisNode, int level, int childNumber);
 };

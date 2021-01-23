@@ -3,8 +3,21 @@ TwoFour::TwoFour() {
 	root = new Node();
 }
 TwoFour::~TwoFour() {
-	//FALTA IMPLEMENTAR LA LÓGICA DEL DESTRUCTOR
-	delete root;
+	recMakeEmpty(root,0,0);
+}
+void TwoFour::recMakeEmpty(Node* thisNode, int level, int childNumber){
+	if (thisNode) {
+		if (thisNode->isLeaf()) delete thisNode;
+		int numItems = thisNode->getNumItems();
+		Node* nextNode = nullptr;
+		for (int j = 0; j < numItems + 1; j++) {
+			nextNode = thisNode->getChild(j);
+			if (nextNode)
+				recDisplayTree(nextNode, level + 1, j);
+			else
+				return;
+		}
+	}
 }
 string TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
 {

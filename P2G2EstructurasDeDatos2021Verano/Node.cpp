@@ -155,5 +155,10 @@ Node* Node::getSibling(int value) {
 	return x;
 }
 Node::~Node() {
-
+	for (int i = 0; i < ORDER - 1; i++)
+		delete itemArray[i];
+	for (int i = 0; i < ORDER; i++)
+		delete childArray[i];
+	delete parent, delete[] childArray;
+	delete[] itemArray;
 }
