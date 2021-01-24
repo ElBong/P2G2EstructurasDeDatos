@@ -177,6 +177,14 @@ void Menu::option6() {
 	printn("..............................................................................");
 	printn("Digite el valor que desea eliminar: ");
 	int value = readInt();
+	if (tf->getSize() == 1) {
+		delete tf;
+		tf = new TwoFour();
+		printn("Al eliminar el valor, el árbol queda de la siguiente manera: ");
+		printn(tf->toString());
+		cont();
+		return;
+	}
 	Node* aux = tf->find(value);
 	if (aux) {
 		if (tf->remove(aux, value)) {

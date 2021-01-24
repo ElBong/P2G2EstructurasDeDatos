@@ -1,2 +1,4 @@
-﻿  TwoFour.cpp
+﻿  Menu.cpp
+C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(63,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(82,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   P2G2EstructurasDeDatos2021Verano.vcxproj -> C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\x64\Debug\P2G2EstructurasDeDatos2021Verano.exe

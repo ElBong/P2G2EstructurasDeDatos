@@ -6,7 +6,7 @@ TwoFour::TwoFour() {
 }
 bool TwoFour::isEmpty() { return size == 0; }
 TwoFour::~TwoFour() {
-	recMakeEmpty(root, 0, 0);
+	//recMakeEmpty(root, 0, 0);
 	size = 0;
 }
 int TwoFour::getSize()
