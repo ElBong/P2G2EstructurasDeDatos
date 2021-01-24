@@ -22,6 +22,6 @@ void clearScreen();
 void programExit();
 bool readBoolean();
 long long getTime();
-float rndFloat();
-int rndInt(int n);
+float rdmFloat();
+int rdmInt(int n);
 #endif

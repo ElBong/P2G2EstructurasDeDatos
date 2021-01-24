@@ -92,10 +92,10 @@ void Menu::option2() {
 	startTime = getTime();
 	while (operation < (2 * n)) {
 		try {
-			float rand = rndFloat();
+			float rand = rdmFloat();
 			if (rand < 0.4) {
 				// Making sure insert operation runs at 0.4 probability
-				int x = rndInt(n);
+				int x = rdmInt(n);
 				Node* present = tf->find(x);
 				if (present != nullptr) {
 					//printn("Data Already present!!");
@@ -104,9 +104,9 @@ void Menu::option2() {
 				operation++;
 				insertCount++;
 			}
-			rand = rndFloat();
+			rand = rdmFloat();
 			if (rand < 0.25) { // Making sure delete operation runs at 0.25 probability
-				int x = rndInt(n);
+				int x = rdmInt(n);
 				Node* del = tf->find(x);
 				if (del) {
 					tf->remove(del, x);
@@ -114,9 +114,9 @@ void Menu::option2() {
 					operation++;
 				deleteCount++;
 			}
-			rand = rndFloat();
+			rand = rdmFloat();
 			if (rand < 0.35) { // Making sure search operation runs at 0.35 probability
-				tf->find(rndInt(n));
+				tf->find(rdmInt(n));
 				operation++;
 				searchCount++;
 			}

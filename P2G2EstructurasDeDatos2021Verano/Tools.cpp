@@ -21,7 +21,7 @@ int readInt() {
 		try {
 			return stoi(read());
 		}catch (...) {
-			throw InvalidInput("Digite un numero entero.\n");
+			throw InvalidInput("Digite un número entero.\n");
 		}
 	}
 }
@@ -31,7 +31,7 @@ float readFloat() {
 			return stof(read());
 		}
 		catch (...) {
-			throw InvalidInput("Digite un numero real.\n");
+			throw InvalidInput("Digite un número real.\n");
 		}
 	}
 }
@@ -64,10 +64,14 @@ void programExit()
 bool readBoolean() {
 	int n;
 	while (1) {
-		n = readInt();
-		if (n == 1) return true;
-		if (n == 0) return false;
-		throw InvalidInput("Digite 1 o 0.");
+		try {
+			n = readInt();
+			if (n == 1) return true;
+			if (n == 0) return false;
+		}
+		catch (RuntimeException) {
+			throw InvalidInput("Digite 1 o 0.");
+		}
 	}
 }
 
@@ -76,7 +80,7 @@ long long getTime() {
 		chrono::high_resolution_clock::now()
 		).time_since_epoch().count();
 }
-float rndFloat()
+float rdmFloat()
 {
 	//Genera un float aleatorio entre 0 y 1
 	//srand(time(NULL)); //This should be done only once
@@ -84,7 +88,7 @@ float rndFloat()
 	return (float)(((rand() % int(n)) / n));
 }
 
-int rndInt(int n)
+int rdmInt(int n)
 {
 	return rand() % n;
 }
