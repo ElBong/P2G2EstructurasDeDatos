@@ -223,7 +223,7 @@ Node* TwoFour::remove(Node* currnode, int theValue){
 		Node* c = getinordernode(n);
 		NodeData* d = c->getItem(0);
 		int k = d->getData();
-		delete remove(c, d->getData());
+		remove(c, d->getData());
 		size--;
 		Node* found = find(theValue);
 		for (int i = 0; i < found->getNumItems(); i++) {
