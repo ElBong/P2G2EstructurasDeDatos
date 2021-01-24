@@ -6,8 +6,9 @@
 */
 #pragma once
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <sstream>
 #include <fstream>
+#include <chrono>
 #include <conio.h>
 using namespace std;

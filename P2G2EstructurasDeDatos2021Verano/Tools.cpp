@@ -16,13 +16,12 @@ void print(string x) { cout << x; }
 void printn(string x) { cout << x <<"\n"; }
 void printnError(string x) { cerr << "ERROR: " << x << "\n"; }
 
-
 int readInt() {
 	while (1) {
 		try {
 			return stoi(read());
 		}catch (...) {
-			print("Digite un numero entero.\n");
+			throw InvalidInput("Digite un numero entero.\n");
 		}
 	}
 }
@@ -32,7 +31,7 @@ float readFloat() {
 			return stof(read());
 		}
 		catch (...) {
-			print("Digite un numero real.\n");
+			throw InvalidInput("Digite un numero real.\n");
 		}
 	}
 }
@@ -43,7 +42,7 @@ long long readLongLong() {
 			return stoll(read());
 		}
 		catch (...) {
-			print("Digite un numero entero.\n");
+			throw InvalidInput("Digite un numero entero.\n");
 		}
 	}
 }
@@ -68,6 +67,24 @@ bool readBoolean() {
 		n = readInt();
 		if (n == 1) return true;
 		if (n == 0) return false;
-		printn("Digite 1 o 0.");
+		throw InvalidInput("Digite 1 o 0.");
 	}
+}
+
+long long getTime() {
+	return chrono::time_point_cast<chrono::nanoseconds>(
+		chrono::high_resolution_clock::now()
+		).time_since_epoch().count();
+}
+float rndFloat()
+{
+	//Genera un float aleatorio entre 0 y 1
+	//srand(time(NULL)); //This should be done only once
+	float n = 7.0f;
+	return (float)(((rand() % int(n)) / n));
+}
+
+int rndInt(int n)
+{
+	return rand() % n;
 }

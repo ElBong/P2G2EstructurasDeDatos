@@ -20,16 +20,20 @@ public:
 	EmptyTree(const string& error) : RuntimeException(error) {}
 };
 
-class WrongData : public RuntimeException{
+class DataNotFound : public RuntimeException{
 public:
-	WrongData(const string& error) : RuntimeException(error) {}
+	DataNotFound(const string& error) : RuntimeException(error) {}
 };
 
-class DuplicatedData : public RuntimeException {
+class ExistingData : public RuntimeException {
 public:
-	DuplicatedData(const string& error) : RuntimeException(error) {}
+	ExistingData(const string& error) : RuntimeException(error) {}
 };
 class InvalidOperation : public RuntimeException {
 public:
 	InvalidOperation(const string& error) : RuntimeException(error) {}
+};
+class InvalidInput : public RuntimeException {
+public:
+	InvalidInput(const string& error) : RuntimeException(error) {}
 };

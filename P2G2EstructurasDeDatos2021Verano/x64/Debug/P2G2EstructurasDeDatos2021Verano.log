@@ -1,9 +1,4 @@
-﻿  Menu.cpp
-C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(63,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(82,18): warning C4101: 'endTime': unreferenced local variable
-C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\P2G2EstructurasDeDatos2021Verano\Menu.cpp(82,7): warning C4101: 'startTime': unreferenced local variable
-  Node.cpp
-  Source.cpp
-  TwoFour.cpp
+﻿  Node.cpp
+  NodeData.cpp
   Generating Code...
   P2G2EstructurasDeDatos2021Verano.vcxproj -> C:\Users\arnol\Desktop\P2G2EstructurasDeDatos\x64\Debug\P2G2EstructurasDeDatos2021Verano.exe

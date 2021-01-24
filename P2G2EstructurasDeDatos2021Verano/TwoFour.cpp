@@ -30,7 +30,7 @@ void TwoFour::recMakeEmpty(Node* thisNode, int level, int childNumber) {
 string TwoFour::recDisplayTree(Node* thisNode, int level, int childNumber)
 {
 	stringstream s;
-	s << "level=" << level << " child=" << childNumber << " ";
+	s << "Level = " << level << ". Child = " << childNumber << ": ";
 	s << thisNode->displayNode() << "\n";
 	// call ourselves for each child of this node
 	int numItems = thisNode->getNumItems();
@@ -197,17 +197,16 @@ Node* TwoFour::findvalue(Node* theNode, int theValue)
 }
 
 Node* TwoFour::remove(Node* currnode, int theValue){
+
 	if (size == 1) {
 		root->makeEmpty();
 		size--;
 		return nullptr;
 	}
-
 	if (currnode == root) {
 		if(root->getNumItems() != size)
 			throw InvalidOperation("Operación invalida.");
 	}
-
 	Node* y = nullptr;
 	if (currnode->isLeaf()) {
 		if (currnode->getNumItems() > 1) {
@@ -224,7 +223,7 @@ Node* TwoFour::remove(Node* currnode, int theValue){
 		Node* c = getinordernode(n);
 		NodeData* d = c->getItem(0);
 		int k = d->getData();
-		remove(c, d->getData());
+		delete remove(c, d->getData());
 		size--;
 		Node* found = find(theValue);
 		for (int i = 0; i < found->getNumItems(); i++) {

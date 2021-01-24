@@ -8,6 +8,7 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 #include "Libraries.h"
+#include "RuntimeException.h"
 string read(); //Function that reads a string
 void print(string x);
 void printn(string x); //prints with\n 
@@ -19,4 +20,7 @@ void cont(); //continue
 void clearScreen();
 void programExit();
 bool readBoolean();
+long long getTime();
+float rndFloat();
+int rndInt(int n);
 #endif
