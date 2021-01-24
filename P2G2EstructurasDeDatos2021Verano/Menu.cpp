@@ -3,7 +3,7 @@ Menu::Menu() {
 	tf = new TwoFour();
 }
 Menu::~Menu() { delete tf; }
-const int Menu::MAX_RAND = 500;
+const int Menu::MAX_RAND = INF;
 void Menu::startScreen() {
 	setlocale(LC_ALL, "");
 	printn("..............................................................................");
@@ -66,7 +66,16 @@ void Menu::option1() {
 		if (!tf->find(rdm)) { //Si el elemento no existe
 			printf("Insertando a: %d.\n", rdm);
 			tf->insert(rdm);
-		}
+		}else
+			while (true) {
+				rdm = rand() % MAX_RAND + 1;
+				if (tf->find(rdm)) continue;
+				else {
+					printf("Insertando a: %d.\n", rdm);
+					tf->insert(rdm);
+					break;
+				}
+			}
 	}
 	cont();
 }
@@ -180,10 +189,9 @@ void Menu::option6() {
 
 	Node* aux = tf->find(value);
 	if (aux) {
-		if (tf->remove(aux, value)) {
-			printn("Al eliminar el valor, el árbol queda de la siguiente manera: ");
-			printn(tf->toString());
-		}
+		tf->remove(aux, value);
+		printn("Al eliminar el valor, el árbol queda de la siguiente manera: ");
+		printn(tf->toString());
 	}
 	else
 		throw DataNotFound("El elemento no existe.");
