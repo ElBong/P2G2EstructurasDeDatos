@@ -6,7 +6,7 @@ TwoFour::TwoFour() {
 }
 bool TwoFour::isEmpty() { return size == 0; }
 TwoFour::~TwoFour() {
-	//recMakeEmpty(root, 0, 0);
+	recMakeEmpty(root, 0, 0);
 	size = 0;
 }
 int TwoFour::getSize()
@@ -197,12 +197,14 @@ Node* TwoFour::findvalue(Node* theNode, int theValue)
 }
 
 Node* TwoFour::remove(Node* currnode, int theValue){
-
+	
 	if (size == 1) {
-		root->makeEmpty();
+		delete this->root;
+		this->root = new Node();
 		size--;
 		return nullptr;
 	}
+
 	if (currnode == root) {
 		if(root->getNumItems() != size)
 			throw InvalidOperation("Operación invalida.");

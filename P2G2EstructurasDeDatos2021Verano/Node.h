@@ -29,6 +29,4 @@ public:
 	void removeNodeValue(int value);
 	void removeValue(int value, string side);
 	Node* getSibling(int value);
-	//This one is new
-	void makeEmpty();
 };
